@@ -1,0 +1,88 @@
+
+<div class="modal-dialog">
+	<div class="modal-content">
+	
+		<div class='modal-header'>
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3 ng-hide='newFetus'>{{fetus.ten}}</h3>
+			<h3 ng-show='newFetus'>New Fetus</h3>
+		</div>
+
+		<form class="form-horizontal" role="form">
+			<div class='modal-body'>
+				<input type='hidden' class="form-control" ng-model="fetus._id" />
+
+				<div class="form-group">
+					<label>ID</label> <input type='text' class="form-control"
+						ng-model="fetus.id" />
+				</div>
+				
+				<div class="form-group">
+					<label>Bộ phận</label> <input type='text' class="form-control"
+						ng-model="fetus.ten" />
+				</div>
+				
+				<div class="form-group">
+					<label>Mô tả</label>
+					<textarea class="form-control" rows="5" ng-model="fetus.mo_ta" />
+				</div>
+				
+				<div class="form-group">
+					<label>Tuần thai</label> <input type='text' class="form-control"
+						ng-model="fetus.tuan_thai" ng-click="launchPeriodDialog()" 
+						data-toggle="modal" href="#periodDialog" />
+				</div>
+				
+				<div class="form-group">
+					<label>Nhóm chất bổ sung</label> <input type='text' class="form-control"
+						ng-model="fetus.chat" ng-click="launchElementDialog()" 
+						data-toggle="modal" href="#elementDialog" />
+				</div>
+				
+				<div class="form-group">
+					<label>Thực phẩm bổ sung</label> <input type='text' class="form-control"
+						ng-model="fetus.thuc_pham" ng-click="launchFoodDialog()" 
+						data-toggle="modal" href="#foodDialog" />
+				</div>
+				
+				<div class="form-group">
+					<label>Hình ảnh</label>
+					<input type='text' class="form-control"
+						ng-model="fetus.hinh_anh" />
+				</div>
+					
+				<div class="form-group">
+					<label>Lưu ý</label>
+					<textarea class="form-control" rows="5" ng-model="fetus.luu_y" />
+				</div>
+				
+				<div class="form-group">
+					<label>Tham khảo</label>
+					<textarea class="form-control" rows="5" ng-model="fetus.tham_khao" />
+				</div>
+				
+				<label>
+                    <input type="checkbox" ng-model="fetus.completed"> Completed
+                </label>
+				
+			</div>
+
+			<div class='modal-footer'>
+			    <label>
+                    <input type="checkbox" ng-model="fetus.approved"> Approved
+                </label>
+            
+                <div class="form-group">
+				    <textarea class="form-control" rows="2" ng-model="fetus.comment" placeholder="Comment"/>
+				</div>
+			
+				<button type='submit' class="btn btn-danger" data-dismiss="modal"
+					ng-click="delete()">Delete</button>
+
+				<button type='submit' class="btn btn-primary" data-dismiss="modal"
+					ng-click="save()">Save</button>
+			</div>
+		</form>
+	</div>
+</div>

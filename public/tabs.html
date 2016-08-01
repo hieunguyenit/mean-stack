@@ -1,0 +1,47 @@
+<html ng-app="cuccung">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Cuc Cung App</title>
+
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+<style>
+html {
+	overflow-y: scroll;
+}
+
+body {
+	padding-top: 50px;
+}
+</style>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+
+<script
+	src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+
+<script src="javascripts/controllers/tabController.js"></script>
+
+</head>
+
+
+<body>
+	<div ng-controller="TabsController">
+		<tabset> <tab ng-repeat="tab in tabs"
+			ng-click="onClickTab(tab)"
+			heading="{{tab.title}}" 
+			active="tab.active" disabled="tab.disabled">
+		</tab>
+		<div ng-include="currentTab"></div>
+		</tabset>
+	</div>
+</body>

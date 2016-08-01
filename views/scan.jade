@@ -1,0 +1,13 @@
+extends layout
+
+block content
+   div(ng-controller="mainCtrl")
+      h1.page-header Dashboard
+
+      div
+         p
+            button(class="btn btn-success", ng-click='scan()') {{value}}
+
+block script
+   script(src='/app/app.js', type="text/javascript")
+

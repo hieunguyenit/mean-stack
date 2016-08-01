@@ -1,0 +1,97 @@
+
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+
+
+<script src="javascripts/controllers/foodController.js"></script>
+<script src="javascripts/controllers/elementController.js"></script>
+<script src="javascripts/controllers/dishController.js"></script>
+<script src="javascripts/controllers/periodController.js"></script>
+<script src="javascripts/controllers/fetusController.js"></script>
+<script src="javascripts/controllers/searchController.js"></script>
+<script src="javascripts/controllers/questionController.js"></script>
+
+<script src="javascripts/services/elementService.js"></script>
+<script src="javascripts/services/foodService.js"></script>
+<script src="javascripts/services/dishService.js"></script>
+<script src="javascripts/services/periodService.js"></script>
+<script src="javascripts/services/fetusService.js"></script>
+<script src="javascripts/services/searchService.js"></script>
+<script src="javascripts/services/questionService.js"></script>
+
+<script src="javascripts/core.js"></script>
+
+<div ng-app="cuccung">
+	<div ng-controller="FoodController">
+		<div class="container">
+
+			<p>
+				Total number of food: <span class="badge">{{foods.length}}</span>
+			</p>
+			
+			<p>
+				Completed : <span class="badge">{{completed}}</span>
+			</p>
+			
+			<p>
+			    Approved  : <span class="badge">{{approved}}</span>
+			</p>
+
+			<button class="btn btn-success" ng-click="editFood('new')"
+				data-toggle="modal" href="#editModal">
+				<i class="glyphicon glyphicon-plus"></i>&nbsp;Create New Food
+			</button>
+
+			<table class='table table-striped'>
+				<thead>
+					<tr>
+						<th>Food</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat='f in foods'>
+						<td>{{f.ten}}</td>
+						<td>
+							<button role='button' class='btn btn-warning'
+								ng-click="editFood(f)" data-toggle="modal" href="#editModal">
+								<span class="glyphicon glyphicon-edit"></span>&nbsp;Edit
+							</button>
+						</td>
+						<td>
+						    <div ng-if='f.completed == true'>
+						        <i class="glyphicon glyphicon-star"></i>
+						    </div>
+						</td>
+						<td>
+						    <div ng-if='f.approved == true'>
+						        <i class="glyphicon glyphicon-ok"></i>
+						    </div>
+						</td>
+						<td>
+						    {{f.comment}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="modal fade" ng-include="'food-detail.html'"
+				id="editModal" role='dialog'></div>
+
+			<div class="modal fade" ng-include="'element-dialog.html'"
+				id="elementDialog" role='dialog'></div>
+				
+			<div class="modal fade" ng-include="'dish-dialog.html'"
+				id="dishDialog" role='dialog'></div>	
+			
+
+		</div>
+	</div>
+</div>

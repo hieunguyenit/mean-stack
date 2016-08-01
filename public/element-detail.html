@@ -1,0 +1,102 @@
+
+<div class="modal-dialog">
+	<div class="modal-content">
+	
+		<div class='modal-header'>
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3 ng-hide='newElement'>{{element.ten}}</h3>
+			<h3 ng-show='newElement'>New Element</h3>
+		</div>
+
+		<form class="form-horizontal" role="form">
+			<div class='modal-body'>
+				<input type='hidden' class="form-control" ng-model="element._id" />
+
+				<div class="form-group">
+					<label>ID</label> <input type='text' class="form-control"
+						ng-model="element.id" />
+				</div>
+
+				<div class="form-group">
+					<label>Tên</label> <input type='text' class="form-control"
+						ng-model="element.ten" />
+				</div>
+                
+                <div class="form-group">
+					<label>Tên khác</label> <input type='text' class="form-control"
+						ng-model="element.ten_khac" />
+				</div>
+				
+				<div class="form-group">
+					<label>Nên dùng</label> <input type='text' class="form-control"
+						ng-model="element.nen_dung" />
+				</div>
+
+				<div class="form-group">
+					<label>Thực phẩm</label> <input type='text' class="form-control"
+						ng-model="element.thuc_pham" ng-click="launchFoodDialog()" 
+						data-toggle="modal" href="#foodDialog" />
+				</div>
+				
+				<div class="form-group">
+					<label>Món ăn</label> <input type='text' class="form-control"
+						ng-model="element.mon_an" ng-click="launchDishDialog()" 
+						data-toggle="modal" href="#dishDialog" />
+				</div>
+
+				<div class="form-group">
+					<label>Cơ sở khoa học</label>
+					<textarea class="form-control" rows="10" ng-model="element.co_so" />
+				</div>
+
+				<div class="form-group">
+					<label>Lưu ý sử dụng</label>
+					<textarea class="form-control" rows="10" ng-model="element.luu_y" />
+				</div>
+
+				<div class="form-group">
+					<label>Dưỡng chất có ở đâu</label>
+					<textarea class="form-control" rows="10"
+						ng-model="element.duong_chat" />
+				</div>
+
+				<div class="form-group">
+					<label>Tham khảo</label>
+					<textarea class="form-control" rows="5"
+						ng-model="element.tham_khao" />
+				</div>
+
+                <div class="form-group">
+					<label>Hình ảnh</label> <input type='text' class="form-control"
+						ng-model="element.hinh_anh" />
+				</div>
+
+                <div class="form-group">
+					<label>Thông tin ngắn gọn</label>
+					<textarea class="form-control" rows="5" ng-model="element.brief_info" />
+				</div>
+				
+				<label>
+                    <input type="checkbox" ng-model="element.completed"> Completed
+                </label>
+			</div>
+
+			<div class='modal-footer'>
+			    <label>
+                    <input type="checkbox" ng-model="element.approved"> Approved
+                </label>
+            
+                <div class="form-group">
+				    <textarea class="form-control" rows="2" ng-model="element.comment" placeholder="Comment"/>
+				</div>
+			    
+				<button type='submit' class="btn btn-danger" data-dismiss="modal"
+					ng-click="delete()">Delete</button>
+
+				<button type='submit' class="btn btn-primary" data-dismiss="modal"
+					ng-click="save()">Save</button>
+			</div>
+		</form>
+	</div>
+</div>

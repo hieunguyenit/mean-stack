@@ -1,0 +1,9 @@
+============================================
+Version		: 1.0
+Date		: 2014, Mar 15
+Author		: Hieu Nguyen
+============================================
+
+1. Input Form for Element, Food, Dish, Period and Fetus
+
+2. Search by item name

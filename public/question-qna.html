@@ -1,0 +1,129 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+
+<script src="javascripts/controllers/foodController.js"></script>
+<script src="javascripts/controllers/elementController.js"></script>
+<script src="javascripts/controllers/dishController.js"></script>
+<script src="javascripts/controllers/periodController.js"></script>
+<script src="javascripts/controllers/fetusController.js"></script>
+<script src="javascripts/controllers/searchController.js"></script>
+<script src="javascripts/controllers/questionController.js"></script>
+
+<script src="javascripts/services/elementService.js"></script>
+<script src="javascripts/services/foodService.js"></script>
+<script src="javascripts/services/dishService.js"></script>
+<script src="javascripts/services/periodService.js"></script>
+<script src="javascripts/services/fetusService.js"></script>
+<script src="javascripts/services/searchService.js"></script>
+<script src="javascripts/services/questionService.js"></script>
+
+<script src="javascripts/core.js"></script>
+
+<script type="text/javascript">
+   $(document).ready(function () {
+      $('#accordion').bind('copy paste', function (e) {
+         e.preventDefault();
+      });
+   });
+</script>
+
+<div id="spinner" class="alert alert-info">
+    <strong>Đang tải dữ liệu...</strong>
+</div>
+
+<br/>
+
+<div ng-app="cuccung">
+	<div ng-controller="QuestionController">
+	    <div class="form-group">
+			<select class="form-control" id="qnaMuc" ng-model="cat">
+			    <option style="display:none" value="">Chọn mục</option>
+			    <option value="kienthuc">Kiến thức dinh dưỡng căn bản</option>
+			    <option value="thainhi">Sự phát triển của thai nhi</option>
+                <option value="suckhoe">Sức khỏe, tâm lý bà bầu</option>
+                <option value="dinhduong">Nhu cầu dinh dưỡng trong thai kỳ</option>
+                <option value="hanhtrang">Hành trang đi sinh và nuôi con sữa mẹ</option>
+                <option value="gopy">Góp ý / tương tác hoàn thiện ứng dụng</option>
+                <option value="gioithieu">Giới thiệu ứng dụng đến bạn bè</option>
+                <option value="kythuat">Sử dụng ứng dụng hiệu quả</option>
+            </select>
+		</div>
+				
+	    <div class="panel-group" id="accordion" role="tablist">
+	    
+	        <div class="panel panel-default" ng-repeat="q in questions | filter:{completed:true} | filter:cat">
+	            <div class="panel-heading" role="tab" id="heading{{q.id}}">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" 
+                            href="#collapse{{q.id}}" aria-controls="collapse{{q.id}}">
+                            {{q.cau_hoi}}
+                        </a>
+                    </h4>
+                </div>
+                    
+                <div id="collapse{{q.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{q.id}}">
+                    <div class="panel-body">
+                        <p ng-bind-html="q.tra_loi|nl2br"></p>
+                    </div>
+                </div>    
+	        </div>
+	        
+	        <div class="panel panel-default">
+	            <div class="panel-heading" role="tab" id="headingLast">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseLast"
+                                                        aria-controls="collapseLast">
+                            
+                        </a>
+                    </h4>
+                </div>
+                    
+                <div id="collapseLast" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLast">
+                    <div class="panel-body">
+                        <p></p>
+                    </div>
+                </div>    
+	        </div>
+	        <div class="panel panel-default">
+	            <div class="panel-heading" role="tab" id="headingLast">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseLast"
+                                                        aria-controls="collapseLast">
+                            
+                        </a>
+                    </h4>
+                </div>
+                    
+                <div id="collapseLast" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLast">
+                    <div class="panel-body">
+                        <p></p>
+                    </div>
+                </div>    
+	        </div>
+	        <div class="panel panel-default">
+	            <div class="panel-heading" role="tab" id="headingLast">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseLast"
+                                                        aria-controls="collapseLast">
+                            
+                        </a>
+                    </h4>
+                </div>
+                    
+                <div id="collapseLast" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingLast">
+                    <div class="panel-body">
+                        <p></p>
+                    </div>
+                </div>    
+	        </div>
+	        
+	    </div>
+	    
+	</div>
+</div>

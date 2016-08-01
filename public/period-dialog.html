@@ -1,0 +1,28 @@
+<div class="modal-dialog">
+	<div class="modal-content">
+
+		<div class='modal-header'>
+			<button type="button" class="close" data-dismiss="modal"
+				aria-hidden="true">×</button>
+			<h3>Period List</h3>
+		</div>
+
+
+		<div class='modal-body'>
+			<div ng-repeat="p in periods">
+				<label> <input type="checkbox" name="p.id"
+					ng-model="p.selected" ng-change="updateSelectedPeriod(periods)">
+					{{p.ten}}
+				</label>
+				<br/>
+			</div>
+		</div>
+
+		<div class='modal-footer'>
+			<button class="btn btn-default" data-dismiss="modal" ng-click="">Close</button>
+			<button class="btn btn-primary" data-dismiss="modal"
+				ng-click="addSelectedPeriod()">Add</button>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "async": "0.2.9",
+    "express": "3.2.3",
+    "flow": "^0.2.3",
+    "jade": "*",
+    "mongodb": ">=2.0.37",
+<<<<<<< HEAD
+    "mongoose": ">=4.0"
+=======
+    "mongoose": "^4.1.10",
+    "underscore": "1.7.0"
+>>>>>>> 118ea26f7ecf757fe0158e20c616bc2106f80536
+  },
+  "devDependencies": {
+    "karma": "^0.12.31",
+    "karma-chai-plugins": "^0.2.4",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-mocha": "^0.1.10",
+    "mocha": "^2.1.0"
+  }
+}

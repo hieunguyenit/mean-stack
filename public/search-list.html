@@ -1,0 +1,92 @@
+<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+
+<script src="javascripts/controllers/foodController.js"></script>
+<script src="javascripts/controllers/elementController.js"></script>
+<script src="javascripts/controllers/dishController.js"></script>
+<script src="javascripts/controllers/periodController.js"></script>
+<script src="javascripts/controllers/fetusController.js"></script>
+<script src="javascripts/controllers/searchController.js"></script>
+<script src="javascripts/controllers/questionController.js"></script>
+
+<script src="javascripts/services/elementService.js"></script>
+<script src="javascripts/services/foodService.js"></script>
+<script src="javascripts/services/dishService.js"></script>
+<script src="javascripts/services/periodService.js"></script>
+<script src="javascripts/services/fetusService.js"></script>
+<script src="javascripts/services/searchService.js"></script>
+<script src="javascripts/services/questionService.js"></script>
+<script src="javascripts/core.js"></script>
+<div ng-app="cuccung">
+    <div ng-controller="SearchController">
+        <div class="container">
+            <div class="row">
+                <h2>Search Nutrious Information for Pregnant Women</h2>
+
+                <div id="custom-search-input">
+                    <div class="input-group col-md-5">
+                        <input type="text" class="search-query form-control" placeholder="Element, Food, Dish, Period or Fetus"
+                                    ng-model="keyword" ng-enter="search()" ng-focus/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="search()">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                        </span>
+                    </div>
+                </div>
+                
+                <br/>
+                
+                <div ng-repeat="r in result">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">{{r.name}}</div>
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion">
+                                <div ng-repeat="item in r.list">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{item.id}}">
+                                                    {{item.ten}}
+                                                </a>
+                                            </h4>
+                                            
+                                        </div>
+                                        <div id="collapse{{item.id}}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div ng-repeat="(key,value) in item">
+                                                    <div ng-if="key != 'id' && key != '_id' && key != '__v' && key != 'ten'
+                                                                && key != 'tham_khao' && key != 'chat' 
+                                                                && key != 'mon_an' && key != 'thuc_pham' && key != 'tuan_thai'">
+                                                        <strong>{{key}}</strong> : {{value}}
+                                                    </div>
+                                                    <div ng-if="key == 'tham_khao'">
+                                                        <strong>{{key}}</strong> : <a href="{{value}}">{{value}}</a>
+                                                    </div>
+                                                    <div ng-if="key == 'thuc_pham' || key == 'chat' || key == 'mon_an'
+                                                                || key == 'tuan_thai'">
+                                                        <strong>{{key}}</strong> :
+                                                        <a href="#refDialog" ng-click="launchRefDialog(key,value)"
+                                                            data-toggle="modal" >{{value}}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            
+            <div class="modal fade" ng-include="'search-dialog.html'"
+				id="refDialog" role='dialog'>
+			</div>
+            
+        </div>
+    </div>
+</div>
